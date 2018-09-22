@@ -208,10 +208,9 @@ prediction_test_cruncher <- function(rownumber,dataset,n_neighbors,pred_vars){
 }
 
 
-output_model_ev <- lapply(prediction_strings, function(k) prediction_test_cruncher(1:20,random_players,50,k))
+output_model_ev <- lapply(prediction_strings, function(k) prediction_test_cruncher(1:500,random_players,50,k))
 
 
-output_model_ev
 
 ### is the error term correlated to players quality?
 ## first check: real value vs error
@@ -224,50 +223,4 @@ ggplot(data=out_table,aes(x=real_value,y=prediction))+
     geom_point()+geom_abline(slope=1,intercept=0)+theme_bw()
 # model is too optimistic vor very bad players and a little pesimistic for everyone else
 
-
-out_table[order(-error)] %>% head(40)
-
-
-## Create matrix with probable predictors
-predictor_string
-
-df.comp.use[Player=="Amar'e Stoudemire"][,.(Player,season,FPPM)]
-
-
-
-
-out_table[error<0.1] %>% nrow
-
-
-df.comp.use[G>10][order(-FT.)][,1:6] %>% head(20)
-
-
-df.comp.use %>% names
-
-df.comp.use[Player=="Dahntay Jones" & season=="2016-2017"]
-
-
-
-df.comp.use[,"last_year":=(max(years_active)),by=Player]
-
-df.comp.use[,"last_year_dummy":=(ifelse(last_year==years_active,1,0))]
-
-df.comp.use %>% names
-
-df.comp.use %>% head(20)
-
-
-
---------------------------------------------
-  
-
-
-
-
-df.comp.use[1:10,c("Pk","Pos"),with=FALSE]
-
-
-
-
-f.find_neighbor_vars(df.comp.use,"Randy Smith","1980-1981",50,FALSE,predictor_string)
 
